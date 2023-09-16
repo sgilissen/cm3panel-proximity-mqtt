@@ -1,0 +1,12 @@
+[Unit]
+Description=PIR and DHT11 monitor service
+Wants=systemd-networkd-wait-online.service
+After=systemd-networkd-wait-online.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/panel/Scripts/pirandtemp.py
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
